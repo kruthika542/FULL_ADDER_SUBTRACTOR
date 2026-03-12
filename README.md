@@ -44,12 +44,56 @@ Write the detailed procedure here
 
 **Program:**
 
-/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
+module de41(
+   input  wire clk,      
+   input  wire reset_n,  
+   output reg  [3:0] q   
+);
+
+
+   always @(negedge clk or negedge reset_n) begin
+       if (!reset_n)
+           q[0] <= 1'b0;
+       else
+           q[0] <= ~q[0];
+   end
+
+
+   always @(negedge q[0] or negedge reset_n) begin
+       if (!reset_n)
+           q[1] <= 1'b0;
+       else
+           q[1] <= ~q[1];
+   end
+
+
+   always @(negedge q[1] or negedge reset_n) begin
+       if (!reset_n)
+           q[2] <= 1'b0;
+       else
+           q[2] <= ~q[2];
+   end
+
+
+   always @(negedge q[2] or negedge reset_n) begin
+       if (!reset_n)
+           q[3] <= 1'b0;
+       else
+           q[3] <= ~q[3];
+   end
+
+endmodule
+
+Developed by: Kruthika R 
+RegisterNumber: 212225240075
 */
 
 **RTL Schematic**
+<img width="1738" height="802" alt="image" src="https://github.com/user-attachments/assets/8d0a3e8a-e2c3-41e9-b084-2a00dd489a28" />
 
 **Output Timing Waveform**
+<img width="1918" height="965" alt="image" src="https://github.com/user-attachments/assets/29955ce0-4654-4e7d-9fc9-89202bb8c121" />
 
 **Result:**
 
