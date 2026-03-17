@@ -40,60 +40,56 @@ Borrow out = A'Bin + A'B + BBin
 
 **Procedure**
 
-Write the detailed procedure here
+Type the program in Quartus software.
+
+Compile and run the program.
+
+Generate the RTL schematic and save the logic diagram.
+
+Create nodes for inputs and outputs to generate the timing diagram.
+
+For different input combinations generate the timing diagram.
 
 **Program:**
 
-/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
-module de41(
-   input  wire clk,      
-   input  wire reset_n,  
-   output reg  [3:0] q   
-);
+**FULL ADDER**
 
-
-   always @(negedge clk or negedge reset_n) begin
-       if (!reset_n)
-           q[0] <= 1'b0;
-       else
-           q[0] <= ~q[0];
-   end
-
-
-   always @(negedge q[0] or negedge reset_n) begin
-       if (!reset_n)
-           q[1] <= 1'b0;
-       else
-           q[1] <= ~q[1];
-   end
-
-
-   always @(negedge q[1] or negedge reset_n) begin
-       if (!reset_n)
-           q[2] <= 1'b0;
-       else
-           q[2] <= ~q[2];
-   end
-
-
-   always @(negedge q[2] or negedge reset_n) begin
-       if (!reset_n)
-           q[3] <= 1'b0;
-       else
-           q[3] <= ~q[3];
-   end
-
+ Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
+ 
+```
+module EXP4FULLADDER(A,B,Cin,Sum,Carry);
+input A,B,Cin;
+output Sum,Carry;
+assign Sum=A^B^Cin;
+assign Carry=A&B|B&Cin|A&Cin;
 endmodule
+```
+**FULL SUBTRACTOR**
+```
+module EXP4FULLSUBTRACTOR(A,B,Cin,Difference,Borrow);
+input A,B,Cin;
+output Difference,Borrow;
+assign Difference=A^B^Cin;
+assign Borrow=~A&B|B&Cin|~A&Cin;
+endmodule
+```
 
 Developed by: Kruthika R 
 RegisterNumber: 212225240075
-*/
+
 
 **RTL Schematic**
-<img width="1738" height="802" alt="image" src="https://github.com/user-attachments/assets/8d0a3e8a-e2c3-41e9-b084-2a00dd489a28" />
+**FULL ADDER**
+<img width="1451" height="733" alt="image" src="https://github.com/user-attachments/assets/409c8784-c021-4a98-9e2c-819efde4ce10" />
+**FULL SUBTRACTOR**
+<img width="1399" height="703" alt="image" src="https://github.com/user-attachments/assets/72615894-2c36-4f10-953d-407fcf52f420" />
+
 
 **Output Timing Waveform**
-<img width="1918" height="965" alt="image" src="https://github.com/user-attachments/assets/29955ce0-4654-4e7d-9fc9-89202bb8c121" />
+**FULL ADDER**
+<img width="1347" height="687" alt="image" src="https://github.com/user-attachments/assets/589d790a-2f62-4f8f-9606-eb08ffa2500e" />
+**FULL SUBTRACTOR**
+<img width="1347" height="704" alt="image" src="https://github.com/user-attachments/assets/3c9ced3d-1a72-4d06-8ffc-8b1543ed8eb7" />
 
 **Result:**
 
